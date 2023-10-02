@@ -58,7 +58,6 @@ app.get("/usuarios",(req,res)=>{
     });
 });
 
-
 app.listen(3001,()=>{
     console.log("Corriendo en el puerto 3001")
 })
