@@ -47,40 +47,73 @@ function App() {
   }
 
   obtenerUsuarios();
-
+ 
   return (
-    <div class="container">
-    <div className="App">
-     <div className='datos'>
-      
-      <label>Nombre:
-        <input onChange={(event)=>{setNombre(event.target.value);}} 
-        type="text"></input> 
-      </label>
-      <label>Apellido:
-        <input onChange={(event)=>{setApellido(event.target.value);}} 
-        type="text"></input> 
-      </label>
-      <label>Edad:
-        <input onChange={(event)=>{setEdad(event.target.value);}}
-         type="number"></input> 
-      </label>
-      <label>Ocupación:
-        <input onChange={(event)=>{setOcupacion(event.target.value);}}
-        type="text"></input> 
-      </label>
-        <button className= 'btn btn-success'onClick={agregar}>Registrar</button>
+    <div className="container">
+      <div className="card text-center">
+        <div className="card-header">
+          GESTIÓN DE USUARIOS
+        </div>
+        <div className="card-body">
+          <div className="input-group mb-3">
+            <span className="input-group-text" id="basic-addon1">Nombre:</span>
+            <input type="text" 
+              onChange={(event)=>{setNombre(event.target.value);}}
+            className="form-control" placeholder="Ingrese un nombre" aria-label="Username" aria-describedby="basic-addon1"/>
+          </div>
+
+          <div className="input-group mb-3">
+            <span className="input-group-text" id="basic-addon1">Apellido:</span>
+            <input type="text" 
+             onChange={(event)=>{setApellido(event.target.value);}}
+            className="form-control" placeholder="Ingrese un apellido" aria-label="Username" aria-describedby="basic-addon1"/>
+          </div>
+
+          <div className="input-group mb-3">
+            <span className="input-group-text" id="basic-addon1">Edad:</span>
+            <input type="number" 
+             onChange={(event)=>{setEdad(event.target.value);}}
+            className="form-control" placeholder="Ingrese una edad" aria-label="Username" aria-describedby="basic-addon1"/>
+          </div>   
+
+          <div className="input-group mb-3">
+            <span className="input-group-text" id="basic-addon1">Ocupacion:</span>
+            <input type="text" 
+             onChange={(event)=>{setOcupacion(event.target.value);}}
+            className="form-control" placeholder="Ingrese una ocupacion" aria-label="Username" aria-describedby="basic-addon1"/>
+          </div>   
+
+        </div>
+        <div className="card-footer text-muted">
+          <button className= 'btn btn-success'onClick={agregar}>Registrar</button>
+        </div>
       </div>
-      <div className='lista'>
-        
+      <table className="table table-striped">
+        <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Nombre</th>
+              <th scope="col">Apellido</th>
+              <th scope="col">Edad</th>
+              <th scope="col">Ocupación</th>
+            </tr>
+        </thead>
+        <tbody>
         {
           listaUsuarios.map((val,Key)=>{
-            return <div className=''>{val.nombre}</div> 
+            return <tr Key={val.id}>
+                      <th scope="row">{val.id}</th>
+                      <td>{val.nombre}</td>
+                      <td>{val.apellido}</td>
+                      <td>{val.edad}</td>
+                      <td>{val.ocupacion}</td>
+                    </tr>  
           })
         }
-      
-      </div>
-     </div>
+                   
+        </tbody>
+      </table>
+
      </div>
   );
 }
