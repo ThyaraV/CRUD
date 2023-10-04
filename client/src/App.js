@@ -62,10 +62,12 @@ function App() {
 
   const limpiar=()=>{
     
-    setNombre();
-    setApellido();
-    setEdad();
-    setOcupacion();
+    setNombre("");
+    setApellido("");
+    setEdad("");
+    setOcupacion("");
+    setId("");
+    setEditar(false);
     
   }
 
@@ -131,7 +133,7 @@ function App() {
             editar?
             <div>
             <button className= 'btn btn-warning m=2'onClick={update}>Actualizar</button>
-            <button className= 'btn btn-info m=2'onClick={agregar}>Cancelar</button>
+            <button className= 'btn btn-info m=2'onClick={limpiar}>Cancelar</button>
             </div>
             :
             <button className= 'btn btn-success'onClick={agregar}>Registrar</button>
