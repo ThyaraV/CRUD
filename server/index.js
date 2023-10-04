@@ -58,6 +58,23 @@ app.get("/usuarios",(req,res)=>{
     });
 });
 
+app.put("/update",(req,res)=>{
+    const id=req.body.id;
+    const nombre=req.body.nombre;
+    const apellido=req.body.apellido;
+    const edad=req.body.edad;
+    const ocupacion=req.body.ocupacion;
+    db.query('UPDATE usuarios SET nombre=?,apellido=?,edad=?,ocupacion=? WHERE id=?',[nombre,apellido,edad,ocupacion,id],
+    (err,result)=>{
+        if(err){
+            console.log(err);
+        }else{
+            res.send("Usuario actualizado con éxito");
+        }
+    });
+});
+
 app.listen(3001,()=>{
     console.log("Corriendo en el puerto 3001")
 })
+
