@@ -46,7 +46,7 @@ function App() {
 
   }
 
-  obtenerUsuarios();
+
  
   return (
     <div className="container">
