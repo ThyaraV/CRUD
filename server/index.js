@@ -37,7 +37,7 @@ app.post("/create",(req,res)=>{
         if(err){
             console.log(err);
         }else{
-            res.send("Usuario registrado con éxito");
+            res.send(result);
         }
     });
 });
@@ -69,7 +69,20 @@ app.put("/update",(req,res)=>{
         if(err){
             console.log(err);
         }else{
-            res.send("Usuario actualizado con éxito");
+            res.send(result);
+        }
+    });
+});
+
+
+app.put("/delete/:id",(req,res)=>{
+    const id=req.params.id;
+    db.query('  DELETE FROM usuarios WHERE id=?',id,
+    (err,result)=>{
+        if(err){
+            console.log(err);
+        }else{
+            res.send(result);
         }
     });
 });

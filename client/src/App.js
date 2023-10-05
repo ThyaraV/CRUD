@@ -2,6 +2,9 @@ import './App.css';
 import {useState}from "react";
 import Axios from "axios";
 import 'bootstrap/dist/css/bootstrap.min.css';
+
+import Swal from 'sweetalert2'
+
 /**
  * The function App returns a div element with input fields for name, last name, age, and occupation.
  * @returns The App component is returning a JSX element.
@@ -37,8 +40,15 @@ function App() {
       ocupacion:ocupacion
     }).then(()=>{
       obtenerUsuarios();
-      alert("Usuario Registrado");
       limpiar();
+      //alert("Usuario Registrado");
+      Swal.fire({
+        title:"<strong>Registro Exitoso</strong>",
+        html:"<i>El usuario"+<strong>nombre</strong>+"fue registrado con éxito</i>",
+        icon:'success',
+        timer:4000
+      })
+      
     });
 
   }
@@ -53,11 +63,31 @@ function App() {
       ocupacion:ocupacion
     }).then(()=>{
       obtenerUsuarios();
-      alert("Usuario actualizado");
+      //alert("Usuario actualizado");
       limpiar();
+      Swal.fire({
+        title:"<strong>Actualización Exitosa</strong>",
+        html:"<i>El usuario"+<strong>nombre</strong>+"fue actualizado con éxito</i>",
+        icon:'success',
+        timer:4000
+      })
 
     });
+  }
 
+  const deleteUser=()=>{
+    Axios.delete(`http://localhost:3001/delete/${id}`).then(()=>{
+      obtenerUsuarios();
+      //alert("Usuario actualizado");
+      limpiar();
+      Swal.fire({
+        title:"<strong>Eliminación Exitosa</strong>",
+        html:"<i>El usuario"+<strong>nombre</strong>+"fue eliminado</i>",
+        icon:'success',
+        timer:4000
+      })
+
+    });
   }
 
   const limpiar=()=>{
@@ -168,7 +198,10 @@ function App() {
                               editarUsuario(val);
                             }}
                           className="btn btn-info">Editar</button>
-                          <button type="button" className="btn btn-danger">Eliminar</button>
+                          <button type="button"
+                          onClick={()=>{
+                            deleteUser(val.id);
+                          }} className="btn btn-danger">Eliminar</button>
                         </div>
                       </td>
                     </tr>  
