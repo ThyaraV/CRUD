@@ -75,9 +75,9 @@ app.put("/update",(req,res)=>{
 });
 
 
-app.put("/delete/:id",(req,res)=>{
+app.delete("/delete/:id",(req,res)=>{
     const id=req.params.id;
-    db.query('  DELETE FROM usuarios WHERE id=?',id,
+    db.query('DELETE FROM usuarios WHERE id=?',id,
     (err,result)=>{
         if(err){
             console.log(err);

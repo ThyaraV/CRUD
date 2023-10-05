@@ -44,7 +44,7 @@ function App() {
       //alert("Usuario Registrado");
       Swal.fire({
         title:"<strong>Registro Exitoso</strong>",
-        html:"<i>El usuario"+<strong>nombre</strong>+"fue registrado con éxito</i>",
+        html:"<i>El usuario <strong>"+nombre+"</strong> fue registrado con éxito</i>",
         icon:'success',
         timer:4000
       })
@@ -67,7 +67,7 @@ function App() {
       limpiar();
       Swal.fire({
         title:"<strong>Actualización Exitosa</strong>",
-        html:"<i>El usuario"+<strong>nombre</strong>+"fue actualizado con éxito</i>",
+        html:"<i>El usuario <strong>"+nombre+"</strong> fue actualizado con éxito</i>",
         icon:'success',
         timer:4000
       })
@@ -76,37 +76,32 @@ function App() {
   }
 
   const deleteUser=(val)=>{
-    Axios.delete(`http://localhost:3001/delete/${val.id}`).then(()=>{
-      obtenerUsuarios();
-      //alert("Usuario actualizado");
-      limpiar();
-      Swal.fire({
-        title:"Confirmar eliminado?",
-        html:"<i>¿Desea eliminar a <strong>"+val.nombre+"</strong>?</i>",
-        icon: "warning",
-        showCancelButton:true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor:"#d33",
-        confirmButtonText:""
-      }).then((result)=>{
-        Swal.fire(
-          "Deleted",
-          "Your file has been deleted",
-          "success"
-        )
-      })
-      Swal.fire({
-        title:"<strong>Eliminar</strong>",
-        html:"<i>¿Desea eliminar a <strong>"+val.nombre+"</strong>?</i>",
-        buttons:["No","Sí"],
-        icon:'warning',
-      }).then(res=>{
-        if(res){
-          
-        }
-      })
+    Swal.fire({
+      title:"Confirmar eliminado?",
+      html:"<i>¿Desea eliminar a <strong>"+val.nombre+"</strong>?</i>",
+      icon: "warning",
+      showCancelButton:true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor:"#d33",
+      confirmButtonText:"Si, eliminarlo"
+    }).then((result)=>{
+      if(result.isConfirmed){
+        Axios.delete(`http://localhost:3001/delete/${val.id}`).then(()=>{
+          obtenerUsuarios();
+          //alert("Usuario actualizado");
+          limpiar();   
+          Swal.fire(
+            "Eliminado",
+            val.nombre+" fue eliminado",
+            "success"
+          )
 
+        });
+       
+      }
+      
     });
+  
   }
 
   const limpiar=()=>{
