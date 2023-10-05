@@ -75,16 +75,35 @@ function App() {
     });
   }
 
-  const deleteUser=()=>{
-    Axios.delete(`http://localhost:3001/delete/${id}`).then(()=>{
+  const deleteUser=(val)=>{
+    Axios.delete(`http://localhost:3001/delete/${val.id}`).then(()=>{
       obtenerUsuarios();
       //alert("Usuario actualizado");
       limpiar();
       Swal.fire({
-        title:"<strong>Eliminación Exitosa</strong>",
-        html:"<i>El usuario"+<strong>nombre</strong>+"fue eliminado</i>",
-        icon:'success',
-        timer:4000
+        title:"Confirmar eliminado?",
+        html:"<i>¿Desea eliminar a <strong>"+val.nombre+"</strong>?</i>",
+        icon: "warning",
+        showCancelButton:true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor:"#d33",
+        confirmButtonText:""
+      }).then((result)=>{
+        Swal.fire(
+          "Deleted",
+          "Your file has been deleted",
+          "success"
+        )
+      })
+      Swal.fire({
+        title:"<strong>Eliminar</strong>",
+        html:"<i>¿Desea eliminar a <strong>"+val.nombre+"</strong>?</i>",
+        buttons:["No","Sí"],
+        icon:'warning',
+      }).then(res=>{
+        if(res){
+          
+        }
       })
 
     });
@@ -200,7 +219,7 @@ function App() {
                           className="btn btn-info">Editar</button>
                           <button type="button"
                           onClick={()=>{
-                            deleteUser(val.id);
+                            deleteUser(val);
                           }} className="btn btn-danger">Eliminar</button>
                         </div>
                       </td>
