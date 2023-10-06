@@ -27,3 +27,8 @@ Express es un framework minimalista para Node.js que simplifica el desarrollo de
 
 ### ARQUITECTURA DE FRAMEWORKS
 ![image](https://github.com/ThyaraV/CRUD/assets/96449161/f94a0b24-11df-4654-a87f-88d6c63cb345)
+
+![image](https://github.com/ThyaraV/CRUD/assets/96449161/b7a6df76-ef74-47b7-98a5-e1bb9c18df34)
+
+La arquitectura de la aplicación web combina React en el frontend para la interfaz de usuario, Node.js y Express en el backend para gestionar las solicitudes y rutas API, junto con MySQL como base de datos para realizar operaciones CRUD de usuarios. Axios se utiliza tanto en el cliente como en el servidor para enviar y recibir datos a través de solicitudes HTTP. En el flujo de trabajo CRUD, los usuarios pueden crear, leer, actualizar y eliminar registros de usuarios. El servidor Node.js se encarga de interactuar con la base de datos MySQL utilizando Sequelize como ORM, mientras que React proporciona la interfaz de usuario para que los usuarios realicen estas operaciones. Además, se implementan medidas de seguridad y validación tanto en el cliente como en el servidor para garantizar la integridad y seguridad de los datos. Esta arquitectura proporciona una base sólida para desarrollar una aplicación web robusta y escalable.
+
