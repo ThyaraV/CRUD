@@ -139,8 +139,8 @@ function App() {
   return (
     <div className="container">
       <div className="card text-center">
-        <div className="card-header">
-          GESTIÓN DE USUARIOS
+      <div className="card-header" style={{ backgroundColor: 'skyblue', color: 'white' }}>
+          <strong>GESTIÓN DE USUARIOS</strong>
         </div>
         <div className="card-body">
           <div className="input-group mb-3">
