@@ -26,4 +26,4 @@ Express es un framework minimalista para Node.js que simplifica el desarrollo de
 [Flexibilidad] Express es lo suficientemente flexible como para adaptarse a una variedad de aplicaciones web, desde simples APIs hasta aplicaciones web complejas.
 
 ### ARQUITECTURA DE FRAMEWORKS
-![Alt text](image-1.png)
+![image](https://github.com/ThyaraV/CRUD/assets/96449161/f94a0b24-11df-4654-a87f-88d6c63cb345)
