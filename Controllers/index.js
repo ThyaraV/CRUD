@@ -59,6 +59,11 @@ app.get("/usuarios",(req,res)=>{
     });
 });
 
+/**
+ * Petición de Actualizar * 
+ * req:peticion
+ * res:respuesta 
+*/
 app.put("/update",(req,res)=>{
     const id=req.body.id;
     const nombre=req.body.nombre;
@@ -75,7 +80,11 @@ app.put("/update",(req,res)=>{
     });
 });
 
-
+/**
+ * Petición de Eliminar * 
+ * req:peticion
+ * res:respuesta 
+*/
 app.delete("/delete/:id",(req,res)=>{
     const id=req.params.id;
     db.query('DELETE FROM usuarios WHERE id=?',id,
